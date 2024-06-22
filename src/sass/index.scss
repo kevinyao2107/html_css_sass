@@ -1,0 +1,272 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+
+$primary-color: #479265;
+$secondary-color: #2d5a39;
+$hover-color: #284f32;
+$white-color: #ffff;
+$black-color: #000000;
+$grey-color: #f1f1f1;
+$grey-black: #e5e5e5;
+$grey-second: #494949;
+$yellow-color: #f2be00;
+$red-color: #ec0707;
+$second-red-color: #f85f5f1a;
+
+@mixin button($bg, $color) {
+  background-color: $bg;
+  color: $color;
+  padding: 8px 18px;
+  border: none;
+  border-radius: 20px;
+  cursor: pointer;
+}
+
+@mixin descptionEl($weight) {
+  font-weight: $weight;
+  font-size: 16px;
+  margin-bottom: 5px;
+}
+
+@mixin actions-button($bg, $color, $weight) {
+  background-color: $bg;
+  border: none;
+  padding: 5px;
+  color: $color;
+  font-weight: $weight;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+* {
+  margin: 0px;
+  padding: 0px;
+}
+
+body {
+  font-family: 'Roboto', sans-serif;
+  font-weight: 500;
+  background-color: $grey-color;
+}
+
+.header {
+  background: url('https://images.unsplash.com/photo-1535914254981-b5012eebbd15?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D');
+  height: 70vh;
+  background-size: cover;
+
+  &-nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 80%;
+    margin: 0px auto;
+    padding: 5px 0px;
+
+    &__logo a {
+      text-decoration: none;
+      font-size: 2rem;
+      font-weight: 600;
+      color: $white-color;
+      span {
+        color: $red-color;
+      }
+    }
+
+    &__btn {
+      display: flex;
+      align-items: center;
+      list-style: none;
+
+      &-register {
+        @include button($secondary-color, $white-color);
+        margin-right: 5px;
+        &:hover {
+          background-color: $hover-color;
+        }
+      }
+      &-login {
+        @include button($white-color, $black-color);
+      }
+    }
+  }
+}
+
+.hero {
+  display: flex;
+  height: 100%;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    h3 {
+      color: #ffff;
+      font-size: 2rem;
+      margin-bottom: 16px;
+    }
+
+    &-form {
+      background: $white-color;
+      width: 50%;
+      display: flex;
+      border-radius: 50px;
+      margin-bottom: 15px;
+      padding: 5px 5px 5px 18px;
+      justify-content: center;
+      align-items: center;
+
+      i {
+        margin-right: 5px;
+      }
+
+      input {
+        flex: 1;
+        border: none;
+        outline: none;
+      }
+
+      button {
+        border: none;
+        background-color: $primary-color;
+        padding: 15px;
+        border-radius: 50%;
+        color: $white-color;
+      }
+    }
+    &-description {
+      background: $white-color;
+      padding: 10px;
+      border-radius: 50px;
+      font-size: 12px;
+      display: flex;
+      align-items: center;
+      span {
+        display: block;
+        margin-right: 10px;
+      }
+    }
+  }
+}
+
+.main {
+  width: 70%;
+  margin: auto;
+  &-nav {
+    width: 60%;
+    margin: auto;
+    padding: 10px 0px;
+    &__els {
+      display: flex;
+      list-style: none;
+      &-item {
+        margin-right: 3rem;
+
+        &:first-child:after {
+          content: '-';
+          height: 2px;
+          display: block;
+          width: 100%;
+          background-color: $primary-color;
+          margin-top: 5px;
+        }
+
+        a {
+          text-decoration: none;
+          color: $black-color;
+          text-transform: capitalize;
+          font-size: 25px;
+          &:hover {
+            color: $hover-color;
+          }
+        }
+      }
+    }
+  }
+}
+
+.filter {
+  width: 80%;
+  margin: 10px auto;
+
+  &-els {
+    display: flex;
+    align-items: center;
+    list-style: none;
+    &__el {
+      margin-right: 2rem;
+      button {
+        @include button($grey-black, $black-color);
+      }
+      &:first-child button {
+        @include button($black-color, $white-color);
+      }
+    }
+  }
+}
+
+.section {
+  padding: 20px 0px;
+  &-resto {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+    gap: 20px;
+    &__item {
+      &-img {
+        img {
+          width: 100%;
+          height: 200px;
+          object-fit: cover;
+          border-radius: 16px;
+        }
+      }
+      &-title {
+        h3 {
+          font-size: 16.5px;
+          margin-bottom: 8px;
+        }
+      }
+      &-desc {
+        color: $grey-second;
+        @include descptionEl($weight: 400);
+        span:nth-child(1) {
+          color: $black-color;
+          font-weight: 900;
+        }
+        span:nth-child(2) {
+          color: $yellow-color;
+        }
+      }
+
+      &-shipping {
+        @include descptionEl($weight: 500);
+      }
+
+      &-actions button:first-child {
+        @include actions-button(
+          $bg: $second-red-color,
+          $color: $red-color,
+          $weight: 500
+        );
+      }
+      &-actions button:last-child {
+        @include actions-button(
+          $bg: $grey-black,
+          $color: $black-color,
+          $weight: 600
+        );
+      }
+    }
+  }
+}
+
+.footer {
+  background: $black-color;
+  padding: 20px;
+  color: $white-color;
+  display: flex;
+  justify-content: center;
+  font-size: 16px;
+}
